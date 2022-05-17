@@ -6,7 +6,7 @@ export default class HeroRepository {
   }
 
   async #currentFileContent() {
-    return JSON.parse(await readFile(file))
+    return JSON.parse(await readFile(this.file))
   }
 
   find() {
