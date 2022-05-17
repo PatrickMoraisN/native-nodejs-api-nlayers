@@ -6,7 +6,6 @@ test('Hero Integration Test Suite', async (t) => {
   const testPort = 9009;
 
   // that's bad practice because it mutates the environment
-  
   process.env.PORT = testPort;
 
   const { server } = await import('../../src/index.js')
@@ -26,7 +25,8 @@ test('Hero Integration Test Suite', async (t) => {
 
       assert.deepStrictEqual(
         request.headers.get('content-type'),
-        'application/json'
+        'application/json',
+        'it should return a valid content-type'
       );
 
       assert.strictEqual(request.status, 201);
@@ -34,11 +34,13 @@ test('Hero Integration Test Suite', async (t) => {
       const result = await request.json();
       assert.deepStrictEqual(
         result.success,
-        'User created with success!!'
+        'User created with success!!',
+        'it should return a valid text message!'
       )
 
-      assert.deepStrictEqual(
-        result.id.length > 30
+      assert.ok(
+        result.id.length > 30,
+        'id should be a valid uuid'
       )
       
     })
