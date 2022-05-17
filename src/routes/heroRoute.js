@@ -1,9 +1,9 @@
-import { once } from 'node:events'
+import { once } from 'node:events';
 import Hero from '../entities/hero.js';
 import { DEFAULT_HEADER } from '../util/util.js';
 
 const routes = ({
-  heroService
+  heroService,
 }) => ({
   '/heroes:get': async (request, response) => {
     response.write('GET');
@@ -15,7 +15,7 @@ const routes = ({
     const item = JSON.parse(data);
     const hero = new Hero(item);
 
-    const {id} = hero;
+    const id = await heroService.create(hero);
 
     response.writeHead(201, DEFAULT_HEADER)
     response.write(JSON.stringify({
