@@ -24,4 +24,16 @@ export default class HeroRepository {
 
     return data.id;
   }
+
+  async deleteHero(id) {
+    const currentFile = await this.#currentFileContent();
+    const newDatabase = currentFile.filter(hero => hero.id !== id);
+
+    await writeFile(
+      this.file,
+      JSON.stringify(newDatabase)
+    )
+
+    return id;
+  }
 }

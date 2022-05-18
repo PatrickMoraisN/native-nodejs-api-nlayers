@@ -12,4 +12,8 @@ export default class HeroService {
     return this.heroRepository.create(data);
   }
 
+  deleteHero(id) {
+    return this.heroRepository.deleteHero(id);
+  }
+
 }
