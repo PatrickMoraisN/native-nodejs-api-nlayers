@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert'
+import { EventEmitter } from 'node:events'
 
 const callTracker = new assert.CallTracker();
 process.on('exit', () => callTracker.verify());
@@ -32,5 +33,26 @@ test('Hero routes - endpoints test suite', async (t) => {
 
 
 
-  // await t.test('it should call POST route', )
+  await t.todo('it should call POST route', async () => {
+    const heroServiceStub = {
+      create: async (hero) => hero.id,
+    }
+
+    const endpoints = routes({ heroService: heroServiceStub });
+    const postEndpoint = '/heroes:post';
+    const myEmitter = new EventEmitter();
+    const data = {"id": "idTest", "name": "Italozinho", "age": 13, "power": "Minecraft"}
+    const request = myEmitter.emit('data', {data});
+
+    const response = {
+      write: callTracker.calls(item => {
+        const expected = JSON.stringify({
+          id: "idTest",
+          success: 'User created with success!!',
+        });
+        assert.strictEqual(JSON.stringify(item), expected, 'write should be call with the correct payload')
+      }),
+    }
+    await endpoints[postEndpoint](request, response)
+  });
 })
