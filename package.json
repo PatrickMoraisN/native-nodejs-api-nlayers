@@ -6,9 +6,13 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "test": "node --test test/"
+    "test": "node --test test/",
+    "test:cov": "npx c8 node --test test/"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "c8": "^7.11.3"
+  }
 }
