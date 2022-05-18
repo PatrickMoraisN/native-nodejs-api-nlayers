@@ -46,3 +46,24 @@ _**Node 18.1** required!_
 ```bash
     npm run test:cov
 ```
+
+---
+
+## Requests
+ - base url
+
+    ```bash
+    http://localhost:3000/heroes
+    ```
+
+---
+- GET
+    ![image](assets/image.png)
+
+---
+- POST
+    ![image](assets/imageI.png)
+
+---
+- DELETE
+    ![image](assets/imageD.png)
