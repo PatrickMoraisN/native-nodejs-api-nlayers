@@ -26,6 +26,19 @@ const routes = ({
     }));
     return response.end();
   },
+
+  '/heroes:delete': async (request, response) => {
+    const data = await once(request, 'data');
+    const { id } = JSON.parse(data);
+
+    await heroService.deleteHero(id);
+
+    response.writeHead(201, DEFAULT_HEADER)
+    response.write(JSON.stringify({
+      success: `Hero with id ${id} deleted!`,
+    }));
+    return response.end();
+  }
 })
 
 export {
