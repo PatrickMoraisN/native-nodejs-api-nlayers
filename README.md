@@ -1,4 +1,4 @@
-# Building a complete Node.js WebApi + testing with no frameworks
+# Building a Node.js WebApi + testing with no frameworks
 
 ## Features Checklist
 
@@ -10,19 +10,16 @@
 
 - Testing
     - Unit
-        - [ ] it should test when the application throws an error
         - [x] it should test all files on the routes layer
         - [ ] it should test all files on the repositories layer
         - [ ] it should test all files on the factories layer
-        - Plus
-          - [ ] it should reach 100% code coverage. It's currently not possible to get code coverage metrics using only the native Node.js, we will use [c8](https://www.npmjs.com/package/c8).
+        - [ ] it should reach 100% code coverage. It's currently not possible to get code coverage metrics using only the native Node.js, we will use [c8](https://www.npmjs.com/package/c8).
 
     - Integration / E2E
         - [x] it should test the endpoint for storing heroes' data
         - [ ] it should test the endpoint for retrieving heroes' data
         - [ ] it should test the endpoint for updating heroes' data
         - [ ] it should test the endpoint for deleting heroes' data
-        - [ ] it should test when the application throws an error
 
 ## Command line
 _**Node 18.1** required!_
@@ -61,7 +58,8 @@ _**Node 18.1** required!_
     ![image](assets/image.png)
 
 ---
-- POST
+- POST <br>
+_*Can pass a custom id, or let create a random uuid*_
     ![image](assets/imageI.png)
 
 ---
